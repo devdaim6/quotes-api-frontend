@@ -21,7 +21,7 @@ const categories = [
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("random");
-  const [quotes, setQuotes] = useState([]);
+  const [quotes, setQuotes] = useState({ quote: "", author: "", book: "" });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,11 @@ const Home = () => {
         throw new Error("Failed to fetch quotes");
       }
       console.log(response.data);
-      setQuotes([response.data]);
+      setQuotes({
+        quote: response.data.quote,
+        author: response.data.author || response.data.source,
+        book: response.data.book || "",
+      });
     } catch (error) {
       console.error(error);
     } finally {
@@ -62,15 +66,13 @@ const Home = () => {
         onCategoryChange={handleCategoryChange}
       />
       <div className="max-w-3xl px-4 py-8 mx-auto text-black rounded-lg shadow-md">
-        {quotes.length > 0 &&
-          quotes?.map((quote, index) => (
-            <Quote
-              key={index}
-              text={quote?.quote}
-              book={quote?.book}
-              author={quote?.author || quote?.source}
-            />
-          ))}
+        {quotes && (
+          <Quote
+            text={quotes.quote.quote}
+            book={quotes.quote.book}
+            author={quotes.quote.author || quotes.quote.source}
+          />
+        )}
         <button
           onClick={handleRefetch}
           className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"

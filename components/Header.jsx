@@ -15,9 +15,15 @@ const Header = ({ categories, selectedCategory, onCategoryChange }) => {
             onChange={handleChange}
             className="px-3 py-1 text-black border border-gray-300 rounded-md focus:outline-none focus:border-blue-400"
           >
-            <option value="" selected className="text-black">Select Category</option>
-            {categories.map((category) => (
-              <option className="text-black" key={category} value={category}>
+            <option value="" defaultChecked className="text-black">
+              Select Category
+            </option>
+            {categories.map((category, index) => (
+              <option
+                key={category + index}
+                className="text-black"
+                value={category}
+              >
                 {category}
               </option>
             ))}
