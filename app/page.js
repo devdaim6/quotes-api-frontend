@@ -38,11 +38,7 @@ const Home = () => {
         throw new Error("Failed to fetch quotes");
       }
       console.log(response.data);
-      setQuotes({
-        quote: response.data.quote,
-        author: response.data.author || response.data.source,
-        book: response.data.book || "",
-      });
+      setQuotes(response.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -68,9 +64,9 @@ const Home = () => {
       <div className="max-w-3xl px-4 py-8 mx-auto text-black rounded-lg shadow-md">
         {quotes && (
           <Quote
-            text={quotes.quote.quote}
-            book={quotes.quote.book}
-            author={quotes.quote.author || quotes.quote.source}
+            text={quotes.quote}
+            book={quotes.book}
+            author={quotes.author || quotes.source}
           />
         )}
         <button
