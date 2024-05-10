@@ -76,7 +76,12 @@ const Home = () => {
         >
           {loading
             ? "Fetching..."
-            : `${selectedCategory !== "random" && selectedCategory} Refresh`}
+            : `${
+                selectedCategory !== "random"
+                  ? selectedCategory.charAt(0).toUpperCase() +
+                    selectedCategory.slice(1)
+                  : ""
+              } Refresh`}
         </button>
       </div>
     </div>
