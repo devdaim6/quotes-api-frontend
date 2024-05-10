@@ -72,8 +72,11 @@ const Home = () => {
         <button
           onClick={handleRefetch}
           className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
+          disabled={loading}
         >
-          {loading ? "Loading..." : "Next"}
+          {loading
+            ? "Fetching..."
+            : `${selectedCategory !== "random" && selectedCategory} Refresh`}
         </button>
       </div>
     </div>
