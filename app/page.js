@@ -32,7 +32,8 @@ const Home = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://flask-quotes.vercel.app/?type=${selectedCategory}`
+        // `https://flask-quotes.vercel.app/?type=${selectedCategory}`
+        `https://quotes-api-backend.vercel.app/?type=${selectedCategory}`
       );
       if (response.status !== 200) {
         throw new Error("Failed to fetch quotes");
