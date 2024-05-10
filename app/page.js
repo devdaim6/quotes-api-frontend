@@ -69,20 +69,22 @@ const Home = () => {
             author={quotes.author || quotes.source}
           />
         )}
-        <button
-          onClick={handleRefetch}
-          className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
-          disabled={loading}
-        >
-          {loading
-            ? "Fetching..."
-            : `${
-                selectedCategory !== "random"
-                  ? selectedCategory.charAt(0).toUpperCase() +
-                    selectedCategory.slice(1)
-                  : ""
-              } Refresh`}
-        </button>
+        <p className="flex justify-center">
+          <button
+            onClick={handleRefetch}
+            className="px-4 py-2 mt-4 text-white bg-blue-500 rounded-md"
+            disabled={loading}
+          >
+            {loading
+              ? "Fetching..."
+              : `${
+                  selectedCategory !== "random"
+                    ? selectedCategory.charAt(0).toUpperCase() +
+                      selectedCategory.slice(1)
+                    : ""
+                } Quote`}
+          </button>
+        </p>
       </div>
     </div>
   );
